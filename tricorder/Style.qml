@@ -10,10 +10,6 @@ Item {
         source: "fonts/Silkscreen/Silkscreen-Bold.ttf"
     }
 
-    readonly property font header: Qt.font({
-        family: boldFont.font.family,
-        pixelSize: 24
-    })
     readonly property font title: Qt.font({
         family: boldFont.font.family,
         pixelSize: 24

@@ -2,7 +2,8 @@ import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 
-Window {
+ApplicationWindow {
+    id: root
     width: 400
     height: 800
     visible: true
@@ -14,10 +15,36 @@ Window {
         }
     }
 
-    Pane {
+    SwipeView {
+        id: view
+        currentIndex: bar.currentIndex
         anchors.fill: parent
-        anchors.margins: Style.margins
-        SuitData {}
+
+        Item {
+            SuitData {
+                anchors.margins: Style.margins
+            }
+        }
+        Item {
+            Missions{
+                anchors.margins: Style.margins
+            }
+        }
     }
 
+    footer: TabBar {
+        id: bar
+        currentIndex: view.currentIndex
+        width: parent.width
+
+        TabButton {
+            font: Style.title
+            text: qsTr("Suit Data")
+        }
+
+        TabButton {
+            font: Style.title
+            text: qsTr("Missions")
+        }
+    }
 }

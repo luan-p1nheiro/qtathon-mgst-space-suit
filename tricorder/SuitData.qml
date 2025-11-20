@@ -3,7 +3,7 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import Intermix.WebScrap
 
-Item {
+Pane {
     id: suitData
     anchors.fill: parent
 
@@ -24,10 +24,6 @@ Item {
     ColumnLayout {
         spacing: Style.spacing
         width: parent.width
-
-        MenuSeparator {
-            Layout.fillWidth: true
-        }
 
         Label {
             Layout.alignment: Qt.AlignHCenter

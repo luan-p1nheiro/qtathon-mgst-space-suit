@@ -20,6 +20,7 @@ qt_add_qml_module(apptricorder
     QML_FILES
         Main.qml
         SuitData.qml
+        Missions.qml
         Style.qml
         Env.qml
     RESOURCES
