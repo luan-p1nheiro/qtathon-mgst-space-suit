@@ -1,2 +1,4 @@
 */build
 */.qtcreator
+*/.cache
+*/.qmlls.ini
