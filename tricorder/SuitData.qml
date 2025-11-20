@@ -5,58 +5,85 @@ import Intermix.WebScrap
 
 Item {
     id: suitData
-    property string o2Gauge: "o2 value"
-    property string co2Gauge: "co2 value"
-    property string suitTemperature: "suit temp value"
-    property string externalTemperature: "ext temp value"
-    property string powerCellCharge: "power cell charge"
 
     HttpRequest {
         id: request
-        source: ""
+        source: Env.backendUrl
         method: HttpRequest.Get
-        requestPayload: {}
-        headers: []
-        onFinished: {}
-        onStateChanged: state => {}
+        onFinished: {
+            const response = request.responsePayload;
+            o2Gauge.level = response.o2GaugeLevel;
+            co2Gauge.level = response.co2GaugeLevel;
+            suitTemperature.temperature = response.suitTemperature;
+            externalTemperature.temperature = response.externalTemperature;
+            powerCell.level = response.powerCellCharge;
+        }
+        onStateChanged: state => {
+            if (state === HttpRequest.State.Error)
+                console.log(request.errorMessage);
+        }
     }
 
     ColumnLayout {
         anchors.centerIn: parent
 
         ColumnLayout {
+            id: o2Gauge
+            property double level: 0.0
+
             Label {
                 text: "O2 Gauge"
             }
             Label {
-                text: suitData.o2Gauge
+                text: `${o2Gauge.level.toFixed(1)}`
             }
         }
 
         ColumnLayout {
+            id: co2Gauge
+            property double level: 0.0
+
             Label {
                 text: "CO2 Gauge"
             }
             Label {
-                text: suitData.co2Gauge
+                text: `${co2Gauge.level.toFixed(1)}`
             }
         }
 
         ColumnLayout {
+            id: externalTemperature
+            property double temperature: 0.0
+
             Label {
-                text: "Temperature"
+                text: "External Temperature"
             }
             Label {
-                text: `External: ${suitData.externalTemperature} | Suit Temp: ${suitData.suitTemperature}`
+                text: `${externalTemperature.temperature.toFixed(1)} | Suit Temp: `
             }
         }
 
         ColumnLayout {
+            id: suitTemperature
+            property double temperature: 0.0
+
+            Label {
+                text: "Suit Temperature"
+            }
+            Label {
+                text: `${suitTemperature.temperature.toFixed(1)}`
+            }
+        }
+
+        ColumnLayout {
+            id: powerCell
+            property double level: 0.0
+
             Label {
                 text: "Power Cell Charge"
             }
             Label {
-                text: suitData.powerCellCharge
+                text: `${powerCell.level.toFixed(1)}`
             }
         }
     }

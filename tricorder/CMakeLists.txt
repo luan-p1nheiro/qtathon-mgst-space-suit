@@ -12,11 +12,15 @@ qt_add_executable(apptricorder
     main.cpp
 )
 
+set_source_files_properties(Env.qml
+    PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
+
 qt_add_qml_module(apptricorder
     URI tricorder
     QML_FILES
         Main.qml
         SuitData.qml
+        Env.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
