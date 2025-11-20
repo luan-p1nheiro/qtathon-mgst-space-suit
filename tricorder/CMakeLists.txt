@@ -4,7 +4,7 @@ project(tricorder VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Quick IntermixControls)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -16,6 +16,7 @@ qt_add_qml_module(apptricorder
     URI tricorder
     QML_FILES
         Main.qml
+        SuitData.qml
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -32,6 +33,14 @@ set_target_properties(apptricorder PROPERTIES
 target_link_libraries(apptricorder
     PRIVATE Qt6::Quick
 )
+
+if(ANDROID OR IOS)
+    # Intermix Controls plugin's initializeEngine() is not invoked in iOS
+    target_link_libraries(emile PRIVATE Qt6::IntermixControls Qt6::Multimedia)
+    if(IOS)
+        qt_add_ios_ffmpeg_libraries(emile)
+    endif()
+endif()
 
 include(GNUInstallDirs)
 install(TARGETS apptricorder
