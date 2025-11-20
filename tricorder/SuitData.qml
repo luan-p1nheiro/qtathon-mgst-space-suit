@@ -5,10 +5,11 @@ import Intermix.WebScrap
 
 Item {
     id: suitData
+    anchors.fill: parent
 
     HttpRequest {
         id: request
-        source: Env.backendUrl
+        source: Env.backendUrl + Env.settings.clientId
         method: HttpRequest.Get
         onFinished: {
             const response = request.responsePayload;
@@ -18,72 +19,97 @@ Item {
             externalTemperature.temperature = response.externalTemperature;
             powerCell.level = response.powerCellCharge;
         }
-        onStateChanged: state => {
-            if (state === HttpRequest.State.Error)
-                console.log(request.errorMessage);
-        }
     }
 
     ColumnLayout {
-        anchors.centerIn: parent
+        spacing: Style.spacing
 
-        ColumnLayout {
+        Pane {
             id: o2Gauge
             property double level: 0.0
 
-            Label {
-                text: "O2 Gauge"
-            }
-            Label {
-                text: `${o2Gauge.level.toFixed(1)}`
+            RowLayout {
+                anchors.fill: parent
+
+                Label {
+                    text: "O2 Gauge: "
+                }
+
+                Label {
+                    text: `${o2Gauge.level.toFixed(1)}%`
+                }
             }
         }
 
-        ColumnLayout {
+        MenuSeparator{
+            Layout.fillWidth: true
+        }
+
+        Pane {
             id: co2Gauge
             property double level: 0.0
 
-            Label {
-                text: "CO2 Gauge"
-            }
-            Label {
-                text: `${co2Gauge.level.toFixed(1)}`
+            RowLayout {
+                anchors.fill: parent
+
+                Label {
+                    text: "CO2 Gauge:"
+                }
+
+                Label {
+                    text: `${co2Gauge.level.toFixed(1)}%`
+                }
             }
         }
 
-        ColumnLayout {
+        Pane {
             id: externalTemperature
             property double temperature: 0.0
 
-            Label {
-                text: "External Temperature"
-            }
-            Label {
-                text: `${externalTemperature.temperature.toFixed(1)} | Suit Temp: `
+            RowLayout {
+                anchors.fill: parent
+
+                Label {
+                    text: " External:"
+                }
+
+                Label {
+                    text: `${externalTemperature.temperature.toFixed(1)}°`
+                }
             }
         }
 
-        ColumnLayout {
+        Pane {
             id: suitTemperature
             property double temperature: 0.0
 
-            Label {
-                text: "Suit Temperature"
-            }
-            Label {
-                text: `${suitTemperature.temperature.toFixed(1)}`
+            RowLayout {
+                anchors.fill: parent
+
+                Label {
+                    text: " Suit:"
+                }
+
+                Label {
+                    text: `${suitTemperature.temperature.toFixed(1)}°`
+                }
             }
         }
 
-        ColumnLayout {
+        Pane {
             id: powerCell
             property double level: 0.0
 
-            Label {
-                text: "Power Cell Charge"
-            }
-            Label {
-                text: `${powerCell.level.toFixed(1)}`
+            RowLayout {
+                anchors.fill: parent
+
+                Label {
+                    text: "Power Cell Charge:"
+                }
+
+                Label {
+                    text: `${powerCell.level.toFixed(1)}%`
+                }
             }
         }
     }

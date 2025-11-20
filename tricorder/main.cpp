@@ -1,8 +1,12 @@
+#include <QFontDatabase>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
 int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
+
+    app.setOrganizationName("EstudosQtIfba");
+    app.setApplicationName("Tricorder");
 
     QQmlApplicationEngine engine;
     QObject::connect(
