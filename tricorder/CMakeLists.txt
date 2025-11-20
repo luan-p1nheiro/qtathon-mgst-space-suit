@@ -12,7 +12,7 @@ qt_add_executable(apptricorder
     main.cpp
 )
 
-set_source_files_properties(Env.qml
+set_source_files_properties(Env.qml Style.qml
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 
 qt_add_qml_module(apptricorder
@@ -20,7 +20,11 @@ qt_add_qml_module(apptricorder
     QML_FILES
         Main.qml
         SuitData.qml
+        Style.qml
         Env.qml
+    RESOURCES
+        fonts/Silkscreen/Silkscreen-Regular.ttf
+        fonts/Silkscreen/Silkscreen-Bold.ttf
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

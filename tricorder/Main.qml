@@ -3,12 +3,10 @@ import QtQuick.Layouts
 import QtQuick.Controls
 
 Window {
-    width: 640
+    width: 400
     height: 800
     visible: true
-    title: qsTr("Hello World")
-
-
+    title: qsTr("Tricorder")
 
     Component.onCompleted: {
         if (Env.settings.clientId === "") {
@@ -18,6 +16,8 @@ Window {
 
     Pane {
         anchors.fill: parent
+        anchors.margins: Style.margins
         SuitData {}
     }
+
 }
