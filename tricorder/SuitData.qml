@@ -35,42 +35,18 @@ Pane {
             Layout.fillWidth: true
         }
 
-        Pane {
+        SuitDataPane {
             id: o2Gauge
             property double level: 0.0
-
-            RowLayout {
-                anchors.fill: parent
-
-                Label {
-                    font: Style.subtitle
-                    text: "O2 Gauge: "
-                }
-
-                Label {
-                    font: Style.data
-                    text: `${o2Gauge.level.toFixed(1)}%`
-                }
-            }
+            titleValue: "O2 Gauge: "
+            dataValue: `${o2Gauge.level.toFixed(1)}%`
         }
 
-        Pane {
+        SuitDataPane {
             id: co2Gauge
             property double level: 0.0
-
-            RowLayout {
-                anchors.fill: parent
-
-                Label {
-                    font: Style.subtitle
-                    text: "CO2 Gauge:"
-                }
-
-                Label {
-                    font: Style.data
-                    text: `${co2Gauge.level.toFixed(1)}%`
-                }
-            }
+            titleValue: "CO2 Gauge: "
+            dataValue: `${co2Gauge.level.toFixed(1)}%`
         }
 
         MenuSeparator {
@@ -87,42 +63,18 @@ Pane {
             Layout.fillWidth: true
         }
 
-        Pane {
+        SuitDataPane {
             id: externalTemperature
             property double temperature: 0.0
-
-            RowLayout {
-                anchors.fill: parent
-
-                Label {
-                    font: Style.subtitle
-                    text: " External:"
-                }
-
-                Label {
-                    font: Style.data
-                    text: `${externalTemperature.temperature.toFixed(1)}°`
-                }
-            }
+            titleValue: " External:"
+            dataValue: `${externalTemperature.temperature.toFixed(1)}°`
         }
 
-        Pane {
+        SuitDataPane {
             id: suitTemperature
             property double temperature: 0.0
-
-            RowLayout {
-                anchors.fill: parent
-
-                Label {
-                    font: Style.subtitle
-                    text: " Suit:"
-                }
-
-                Label {
-                    font: Style.data
-                    text: `${suitTemperature.temperature.toFixed(1)}°`
-                }
-            }
+            titleValue: " Suit:"
+            dataValue: `${suitTemperature.temperature.toFixed(1)}°`
         }
 
         MenuSeparator {
@@ -139,23 +91,11 @@ Pane {
             Layout.fillWidth: true
         }
 
-        Pane {
+        SuitDataPane {
             id: powerCell
             property double level: 0.0
-
-            RowLayout {
-                anchors.fill: parent
-
-                Label {
-                    font: Style.subtitle
-                    text: "Power Cell Charge:"
-                }
-
-                Label {
-                    font: Style.data
-                    text: `${powerCell.level.toFixed(1)}%`
-                }
-            }
+            titleValue: "Power Cell:"
+            dataValue: `${powerCell.level.toFixed(1)}%`
         }
     }
 

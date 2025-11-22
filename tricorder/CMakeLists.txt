@@ -4,7 +4,7 @@ project(tricorder VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick IntermixControls)
+find_package(Qt6 REQUIRED COMPONENTS Core Quick IntermixControls QuickControls2)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -23,6 +23,7 @@ qt_add_qml_module(apptricorder
         Missions.qml
         Style.qml
         Env.qml
+        SuitDataPane.qml
     RESOURCES
         fonts/Silkscreen/Silkscreen-Regular.ttf
         fonts/Silkscreen/Silkscreen-Bold.ttf
@@ -40,7 +41,7 @@ set_target_properties(apptricorder PROPERTIES
 )
 
 target_link_libraries(apptricorder
-    PRIVATE Qt6::Quick
+    PRIVATE Qt6::Quick Qt6::Core Qt6::QuickControls2
 )
 
 if(ANDROID OR IOS)
