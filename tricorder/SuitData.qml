@@ -28,7 +28,7 @@ Pane {
         Label {
             Layout.alignment: Qt.AlignHCenter
             font: Style.title
-            text: "GAUGES"
+            text: "GAUGES "
         }
 
         MenuSeparator {
@@ -38,14 +38,14 @@ Pane {
         SuitDataPane {
             id: o2Gauge
             property double level: 0.0
-            titleValue: "O2 Gauge: "
+            titleValue: " O2: "
             dataValue: `${o2Gauge.level.toFixed(1)}%`
         }
 
         SuitDataPane {
             id: co2Gauge
             property double level: 0.0
-            titleValue: "CO2 Gauge: "
+            titleValue: " CO2: "
             dataValue: `${co2Gauge.level.toFixed(1)}%`
         }
 
@@ -56,7 +56,7 @@ Pane {
         Label {
             Layout.alignment: Qt.AlignHCenter
             font: Style.title
-            text: "TEMPERATURES"
+            text: "TEMPERATURES "
         }
 
         MenuSeparator {
@@ -66,14 +66,14 @@ Pane {
         SuitDataPane {
             id: externalTemperature
             property double temperature: 0.0
-            titleValue: " External:"
+            titleValue: " External:"
             dataValue: `${externalTemperature.temperature.toFixed(1)}°`
         }
 
         SuitDataPane {
             id: suitTemperature
             property double temperature: 0.0
-            titleValue: " Suit:"
+            titleValue: " Suit:"
             dataValue: `${suitTemperature.temperature.toFixed(1)}°`
         }
 
@@ -84,7 +84,7 @@ Pane {
         Label {
             Layout.alignment: Qt.AlignHCenter
             font: Style.title
-            text: "POWER"
+            text: "POWER "
         }
 
         MenuSeparator {
@@ -94,7 +94,7 @@ Pane {
         SuitDataPane {
             id: powerCell
             property double level: 0.0
-            titleValue: "Power Cell:"
+            titleValue: " Power Cell:"
             dataValue: `${powerCell.level.toFixed(1)}%`
         }
     }

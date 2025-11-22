@@ -11,32 +11,38 @@ Pane {
     required property double powerCell
 
     ColumnLayout {
-        spacing: Style.spacing
+        width: parent.width
+
+        Label {
+            Layout.alignment: Qt.AlignHCenter
+            font: Style.title
+            text: ""
+        }
 
         SuitLevelsPane {
             id: o2Gauge
-            titleValue: "O2 Gauge:"
+            titleValue: " O2:"
             dataValue: `${suitLevels.o2Gauge.toFixed(1)}%`
         }
 
         SuitLevelsPane {
-            titleValue: "CO2 Gauge:"
+            titleValue: " CO2:"
             dataValue: `${suitLevels.co2Gauge.toFixed(1)}%`
         }
 
         SuitLevelsPane {
             id: externalTemperature
-            titleValue: " Ext:"
+            titleValue: " Ext:"
             dataValue: `${suitLevels.externalTemperature.toFixed(1)}°`
         }
 
         SuitLevelsPane {
-            titleValue: " Suit:"
+            titleValue: " Suit:"
             dataValue: `${suitLevels.suitTemperature.toFixed(1)}°`
         }
 
         SuitLevelsPane {
-            titleValue: "Power Cell:"
+            titleValue: " Power Cell:"
             dataValue: `${suitLevels.powerCell.toFixed(1)}%`
         }
     }
