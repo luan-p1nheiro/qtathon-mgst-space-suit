@@ -1,6 +1,7 @@
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
+import QtQuick.Controls.Universal
 
 ApplicationWindow {
     id: root
@@ -8,6 +9,9 @@ ApplicationWindow {
     height: 800
     visible: true
     title: qsTr("Tricorder")
+
+    Universal.theme: Universal.Dark
+    Universal.accent: "darkgreen"
 
     Component.onCompleted: {
         if (Env.settings.clientId === "") {
@@ -26,7 +30,7 @@ ApplicationWindow {
             }
         }
         Item {
-            Missions{
+            Missions {
                 anchors.margins: Style.margins
             }
         }
