@@ -6,8 +6,15 @@ Pane {
     id: dataPane
     required property string titleValue
     required property string dataValue
+    required property string iconValue
 
     RowLayout {
+        Label {
+            id: iconLabel
+            font: Style.subtitle
+            text: dataPane.iconValue
+        }
+
         Label {
             id: titleLabel
             font: Style.subtitle

@@ -20,29 +20,32 @@ Pane {
         }
 
         SuitLevelsPane {
-            id: o2Gauge
-            titleValue: " O2:"
+            iconValue: ""
+            titleValue: "O2:"
             dataValue: `${suitLevels.o2Gauge.toFixed(1)}%`
         }
 
         SuitLevelsPane {
-            titleValue: " CO2:"
+            iconValue: ""
+            titleValue: "CO2:"
             dataValue: `${suitLevels.co2Gauge.toFixed(1)}%`
         }
 
         SuitLevelsPane {
-            id: externalTemperature
-            titleValue: " Ext:"
+            iconValue: ""
+            titleValue: "Ext:"
             dataValue: `${suitLevels.externalTemperature.toFixed(1)}°`
         }
 
         SuitLevelsPane {
-            titleValue: " Suit:"
+            iconValue: ""
+            titleValue: "Suit:"
             dataValue: `${suitLevels.suitTemperature.toFixed(1)}°`
         }
 
         SuitLevelsPane {
-            titleValue: " Power Cell:"
+            iconValue: ""
+            titleValue: "Power Cell:"
             dataValue: `${suitLevels.powerCell.toFixed(1)}%`
         }
     }
