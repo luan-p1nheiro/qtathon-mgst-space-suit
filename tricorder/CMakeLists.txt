@@ -4,7 +4,11 @@ project(tricorder VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+<<<<<<< HEAD
 find_package(Qt6 REQUIRED COMPONENTS Core Quick IntermixControls QuickControls2)
+=======
+find_package(Qt6 REQUIRED COMPONENTS Quick)
+>>>>>>> main
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -20,20 +24,18 @@ qt_add_qml_module(apptricorder
     QML_FILES
         Main.qml
         SuitData.qml
-        Missions.qml
+        MissionScreen.qml
         Style.qml
         Env.qml
         SuitDataPane.qml
     RESOURCES
         fonts/Silkscreen/Silkscreen-Regular.ttf
         fonts/Silkscreen/Silkscreen-Bold.ttf
+        QML_FILES MissionTasks.qml
+        QML_FILES TimerPanel.qml
 )
 
-# Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
-# If you are developing for iOS or macOS you should consider setting an
-# explicit, fixed bundle identifier manually though.
 set_target_properties(apptricorder PROPERTIES
-#    MACOSX_BUNDLE_GUI_IDENTIFIER com.example.apptricorder
     MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
     MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
     MACOSX_BUNDLE TRUE
@@ -44,13 +46,10 @@ target_link_libraries(apptricorder
     PRIVATE Qt6::Quick Qt6::Core Qt6::QuickControls2
 )
 
-if(ANDROID OR IOS)
-    # Intermix Controls plugin's initializeEngine() is not invoked in iOS
-    target_link_libraries(emile PRIVATE Qt6::IntermixControls Qt6::Multimedia)
-    if(IOS)
-        qt_add_ios_ffmpeg_libraries(emile)
-    endif()
-endif()
+# Para Android/iOS, somente se quiser Multimedia
+#if(ANDROID OR IOS)
+#    target_link_libraries(apptricorder PRIVATE Qt6::Multimedia)
+#endif()
 
 include(GNUInstallDirs)
 install(TARGETS apptricorder

@@ -30,7 +30,11 @@ ApplicationWindow {
             }
         }
         Item {
+<<<<<<< HEAD
             Missions {
+=======
+            MissionScreen{
+>>>>>>> main
                 anchors.margins: Style.margins
             }
         }
