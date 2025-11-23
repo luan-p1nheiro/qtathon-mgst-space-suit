@@ -45,17 +45,17 @@ QMqttClient::ClientState QmlMqttClient::state() const {
     return m_client.state();
 }
 
-int QmlMqttClient::publish(const QString &topic, const QString &message,
+int QmlMqttClient::publish(const QString &topic, const QVariantMap &data,
                            int qos, bool retain) {
     QJsonObject jsonMessage;
     jsonMessage["sender"] = m_clientId;
-    jsonMessage["message"] = message;
+    jsonMessage["data"] = QJsonValue::fromVariant(data);
 
     QJsonDocument doc(jsonMessage);
-    QString jsonString = QString::fromUtf8(doc.toJson(QJsonDocument::Compact));
+    QByteArray jsonData = doc.toJson(QJsonDocument::Compact); 
 
     auto result = m_client.publish(QMqttTopicName(topic),
-                                   jsonString.toUtf8(), qos, retain);
+                                   jsonData, qos, retain);
     return result;
 }
 
@@ -96,7 +96,7 @@ void QmlMqttClient::onMessageReceived(const QByteArray &message,
     }
 
     if (!isOwnMessage) {
-        emit messageReceived(topic.name(), doc["message"].toString(),
+        emit messageReceived(topic.name(), doc["message"].toObject().toVariantMap(),
                              doc["sender"].toString());
     }
 }

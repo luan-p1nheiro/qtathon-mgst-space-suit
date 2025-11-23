@@ -18,6 +18,7 @@ Pane {
             suitTemperature.temperature = response.suitTemperature;
             externalTemperature.temperature = response.externalTemperature;
             powerCell.level = response.powerCellCharge;
+            MqttClientComponent.publish(`suitdata/${MqttClientComponent.clientId}`, response, 0, false);
         }
     }
 

@@ -24,7 +24,7 @@ class QmlMqttClient : public QObject {
 
     Q_INVOKABLE void connectToHost();
     Q_INVOKABLE void disconnectFromHost();
-    Q_INVOKABLE int publish(const QString &topic, const QString &message,
+    Q_INVOKABLE int publish(const QString &topic, const QVariantMap &data,
                             int qos = 0, bool retain = false);
     Q_INVOKABLE QMqttSubscription *subscribe(const QString &topic,
                                              quint8 qos = 0);
@@ -46,11 +46,11 @@ class QmlMqttClient : public QObject {
     void portChanged();
     void stateChanged();
     void clientIdChanged();
-    void messageReceived(const QString &topic, const QString &message,
+    void messageReceived(const QString &topic, const QVariantMap &data,
                          const QString &sender);
 
   private slots:
-    void onMessageReceived(const QByteArray &message,
+    void onMessageReceived(const QByteArray &data,
                            const QMqttTopicName &topic);
 
   private:

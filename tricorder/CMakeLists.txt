@@ -12,7 +12,7 @@ qt_add_executable(apptricorder
     main.cpp
 )
 
-set_source_files_properties(Env.qml Style.qml
+set_source_files_properties(Env.qml Style.qml MqttClientComponent.qml
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 
 qt_add_qml_module(apptricorder
@@ -24,6 +24,7 @@ qt_add_qml_module(apptricorder
         Style.qml
         Env.qml
         SuitDataPane.qml
+        MqttClientComponent.qml
     SOURCES
         qmlmqttclient.cpp qmlmqttclient.h
     RESOURCES
