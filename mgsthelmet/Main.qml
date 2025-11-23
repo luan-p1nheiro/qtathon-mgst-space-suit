@@ -5,7 +5,23 @@ Window {
     width: 1000
     height: 600
     visible: true
-    title: qsTr("Helmet Display")
+    title: qsTr("MGST Helmet Display")
+
+    MqttClient {
+        id: mqttClient
+        hostname: Env.hostname
+        port: Env.port
+        clientId: Env.clientId
+
+        Component.onCompleted: {
+            mqttClient.connectToHost();
+            mqttClient.subscribe(mqttClient.clientId);
+        }
+
+        onMessageReceived: (topic, message, sender) => {
+            console.log(topic + ":" + message + " " + sender);
+        }
+    }
 
     SuitLevels {
         anchors.top: parent.top
