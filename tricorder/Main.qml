@@ -26,7 +26,7 @@ ApplicationWindow {
             }
         }
         Item {
-            Missions{
+            MissionScreen{
                 anchors.margins: Style.margins
             }
         }
