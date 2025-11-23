@@ -6,6 +6,7 @@
 #include <QtMqtt/QMqttSubscription>
 
 #include <QtQml/qqml.h>
+#include <qcontainerfwd.h>
 
 class QmlMqttClient : public QObject {
     Q_OBJECT
@@ -44,11 +45,12 @@ class QmlMqttClient : public QObject {
     void portChanged();
     void stateChanged();
     void clientIdChanged();
-    void messageReceived(const QString &topic, const QString &message,
+    void suitDataMessageReceived(const QVariantMap &data);
+    void messageReceived(const QString &topic, const QVariantMap &data,
                          const QString &sender);
 
   private slots:
-    void onMessageReceived(const QByteArray &message,
+    void onMessageReceived(const QByteArray &data,
                            const QMqttTopicName &topic);
 
   private:

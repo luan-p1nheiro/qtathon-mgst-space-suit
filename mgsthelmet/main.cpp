@@ -6,7 +6,7 @@ int main(int argc, char *argv[]) {
     QGuiApplication app(argc, argv);
 
     app.setOrganizationName("EstudosQtIfba");
-    app.setApplicationName("Tricorder");
+    app.setApplicationName("MSGTHelmet");
 
     QQuickStyle::setStyle("Universal");
 

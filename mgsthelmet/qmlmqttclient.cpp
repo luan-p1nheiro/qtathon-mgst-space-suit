@@ -2,6 +2,7 @@
 #include <QDebug>
 #include <QJsonObject>
 #include <QMqttTopicName>
+#include <qtmetamacros.h>
 
 QmlMqttClient::QmlMqttClient(QObject *parent) : QObject(parent) {
     connect(&m_client, &QMqttClient::hostnameChanged, this,
@@ -48,7 +49,7 @@ QMqttSubscription *QmlMqttClient::subscribe(const QString &topic, quint8 qos) {
     }
 
     QMqttSubscription *subscription =
-        m_client.subscribe(QMqttTopicFilter("mgst/"+topic), qos);
+        m_client.subscribe(QMqttTopicFilter(topic), qos);
     if (subscription) {
         m_subscriptions.insert(topic, subscription);
     }
@@ -69,6 +70,11 @@ void QmlMqttClient::unsubscribe(const QString &topic) {
 void QmlMqttClient::onMessageReceived(const QByteArray &message,
                                       const QMqttTopicName &topic) {
     QJsonDocument doc = QJsonDocument::fromJson(message);
-    emit messageReceived(topic.name(), doc["message"].toString(),
+    QVariantMap data = doc["data"].toObject().toVariantMap();
+    if (topic.name().contains("suitdata")) {
+        emit suitDataMessageReceived(data);
+    }
+
+    emit messageReceived(topic.name(), data,
                          doc["sender"].toString());
 }

@@ -4,11 +4,22 @@ import QtQuick.Layouts
 
 Pane {
     id: suitLevels
-    required property double o2Gauge
-    required property double co2Gauge
-    required property double suitTemperature
-    required property double externalTemperature
-    required property double powerCell
+    property double o2Gauge
+    property double co2Gauge
+    property double suitTemperature
+    property double externalTemperature
+    property double powerCell
+
+    Connections {
+        target: MqttClientComponent
+        function onSuitDataMessageReceived(data) {
+            o2Gauge = data.o2GaugeLevel
+            co2Gauge = data.co2GaugeLevel
+            suitTemperature = data.suitTemperature
+            externalTemperature = data.externalTemperature
+            powerCell = data.powerCellCharge
+        }
+    }
 
     ColumnLayout {
         width: parent.width

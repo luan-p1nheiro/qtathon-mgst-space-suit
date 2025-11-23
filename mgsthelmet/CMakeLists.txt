@@ -5,7 +5,7 @@ project(mgsthelmet VERSION 0.1 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(QT_QML_GENERATE_QMLLS_INI ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Quick QuickControls2)
+find_package(Qt6 REQUIRED COMPONENTS Core Quick QuickControls2 Mqtt)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -13,7 +13,7 @@ qt_add_executable(appmgsthelmet
     main.cpp
 )
 
-set_source_files_properties(Env.qml Style.qml
+set_source_files_properties(Env.qml Style.qml MqttClientComponent.qml
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 
 qt_add_qml_module(appmgsthelmet
@@ -27,6 +27,9 @@ qt_add_qml_module(appmgsthelmet
         Style.qml
         NextTask.qml
         CurrentMission.qml
+        MqttClientComponent.qml
+    SOURCES
+        qmlmqttclient.cpp qmlmqttclient.h
     RESOURCES
         fonts/Silkscreen/Silkscreen-Regular.ttf
         fonts/Silkscreen/Silkscreen-Bold.ttf
@@ -44,7 +47,7 @@ set_target_properties(appmgsthelmet PROPERTIES
 )
 
 target_link_libraries(appmgsthelmet
-    PRIVATE Qt6::Quick Qt6::Core Qt6::QuickControls2
+    PRIVATE Qt6::Quick Qt6::Core Qt6::QuickControls2 Qt6::Mqtt
 )
 
 include(GNUInstallDirs)
