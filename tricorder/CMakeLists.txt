@@ -28,8 +28,7 @@ qt_add_qml_module(apptricorder
         TimerPanel.qml
         TasksScreen.qml
     RESOURCES
-        fonts/Silkscreen/Silkscreen-Regular.ttf
-        fonts/Silkscreen/Silkscreen-Bold.ttf
+        fonts/DepartureMono/DepartureMonoNerdFont-Regular.otf
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
