@@ -4,7 +4,7 @@ project(tricorder VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Quick IntermixControls QuickControls2)
+find_package(Qt6 REQUIRED COMPONENTS Core Quick QuickControls2)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -20,10 +20,13 @@ qt_add_qml_module(apptricorder
     QML_FILES
         Main.qml
         SuitData.qml
-        Missions.qml
         Style.qml
         Env.qml
         SuitDataPane.qml
+        MissionScreen.qml
+        MissionTasks.qml
+        TimerPanel.qml
+        TasksScreen.qml
     RESOURCES
         fonts/Silkscreen/Silkscreen-Regular.ttf
         fonts/Silkscreen/Silkscreen-Bold.ttf
@@ -46,7 +49,7 @@ target_link_libraries(apptricorder
 
 if(ANDROID OR IOS)
     # Intermix Controls plugin's initializeEngine() is not invoked in iOS
-    target_link_libraries(emile PRIVATE Qt6::IntermixControls Qt6::Multimedia)
+    target_link_libraries(emile PRIVATE Qt6::Multimedia)
     if(IOS)
         qt_add_ios_ffmpeg_libraries(emile)
     endif()

@@ -7,19 +7,19 @@ Pane {
     id: suitData
     anchors.fill: parent
 
-    HttpRequest {
-        id: request
-        source: Env.backendUrl + Env.settings.clientId
-        method: HttpRequest.Get
-        onFinished: {
-            const response = request.responsePayload;
-            o2Gauge.level = response.o2GaugeLevel;
-            co2Gauge.level = response.co2GaugeLevel;
-            suitTemperature.temperature = response.suitTemperature;
-            externalTemperature.temperature = response.externalTemperature;
-            powerCell.level = response.powerCellCharge;
-        }
-    }
+    // HttpRequest {
+    //     id: request
+    //     source: Env.backendUrl + Env.settings.clientId
+    //     method: HttpRequest.Get
+    //     onFinished: {
+    //         const response = request.responsePayload;
+    //         o2Gauge.level = response.o2GaugeLevel;
+    //         co2Gauge.level = response.co2GaugeLevel;
+    //         suitTemperature.temperature = response.suitTemperature;
+    //         externalTemperature.temperature = response.externalTemperature;
+    //         powerCell.level = response.powerCellCharge;
+    //     }
+    // }
 
     ColumnLayout {
         spacing: Style.spacing
@@ -99,12 +99,12 @@ Pane {
         }
     }
 
-    Timer {
-        interval: 2000
-        running: true
-        repeat: true
-        onTriggered: {
-            request.start();
-        }
-    }
+    // Timer {
+    //     interval: 2000
+    //     running: true
+    //     repeat: true
+    //     onTriggered: {
+    //         request.start();
+    //     }
+    // }
 }

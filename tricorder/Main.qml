@@ -11,7 +11,7 @@ ApplicationWindow {
     title: qsTr("Tricorder")
 
     Universal.theme: Universal.Dark
-    Universal.accent: "darkgreen"
+    Universal.accent: "white"
 
     Component.onCompleted: {
         if (Env.settings.clientId === "") {
@@ -30,7 +30,12 @@ ApplicationWindow {
             }
         }
         Item {
-            Missions {
+            MissionScreen{
+                anchors.margins: Style.margins
+            }
+        }
+        Item {
+            TasksScreen{
                 anchors.margins: Style.margins
             }
         }
@@ -43,12 +48,17 @@ ApplicationWindow {
 
         TabButton {
             font: Style.title
-            text: qsTr("Suit Data")
+            text: qsTr("")
         }
 
         TabButton {
             font: Style.title
-            text: qsTr("Missions")
+            text: qsTr("󰅍")
+        }
+
+        TabButton {
+            font: Style.title
+            text: qsTr("")
         }
     }
 }
