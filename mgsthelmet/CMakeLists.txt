@@ -20,13 +20,13 @@ qt_add_qml_module(appmgsthelmet
     URI mgsthelmet
     QML_FILES
         Main.qml
-        SuitLevels.qml
-        SuitLevelsPane.qml
+        SuitLevelsSection.qml
+        SuitLevelsLabel.qml
         Warnings.qml
         Env.qml
         Style.qml
         NextTask.qml
-        CurrentMission.qml
+        MissionSection.qml
         MqttClientComponent.qml
     SOURCES
         qmlmqttclient.cpp qmlmqttclient.h

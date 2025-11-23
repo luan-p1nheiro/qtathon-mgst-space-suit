@@ -7,8 +7,13 @@ Window {
     visible: true
     title: qsTr("MGST Helmet Display")
 
-    SuitLevels {
+    SuitLevelsSection {
         anchors.top: parent.top
         anchors.right: parent.right
+    }
+
+    MissionSection {
+        anchors.top: parent.top
+        anchors.left: parent.left
     }
 }

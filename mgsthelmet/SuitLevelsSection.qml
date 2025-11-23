@@ -13,11 +13,11 @@ Pane {
     Connections {
         target: MqttClientComponent
         function onSuitDataMessageReceived(data) {
-            o2Gauge = data.o2GaugeLevel
-            co2Gauge = data.co2GaugeLevel
-            suitTemperature = data.suitTemperature
-            externalTemperature = data.externalTemperature
-            powerCell = data.powerCellCharge
+            o2Gauge = data.o2GaugeLevel;
+            co2Gauge = data.co2GaugeLevel;
+            suitTemperature = data.suitTemperature;
+            externalTemperature = data.externalTemperature;
+            powerCell = data.powerCellCharge;
         }
     }
 
@@ -25,36 +25,45 @@ Pane {
         width: parent.width
 
         Label {
-            Layout.alignment: Qt.AlignHCenter
+            Layout.alignment: Qt.AlignCenter
             font: Style.title
-            text: ""
+            text: "SUIT DATA "
         }
 
-        SuitLevelsPane {
+        Item {
+            implicitHeight: Style.spacing / 2
+        }
+
+        SuitLevelsLabel {
+            Layout.alignment: Qt.AlignRight
             iconValue: ""
             titleValue: "O2:"
             dataValue: `${suitLevels.o2Gauge.toFixed(1)}%`
         }
 
-        SuitLevelsPane {
+        SuitLevelsLabel {
+            Layout.alignment: Qt.AlignRight
             iconValue: ""
             titleValue: "CO2:"
             dataValue: `${suitLevels.co2Gauge.toFixed(1)}%`
         }
 
-        SuitLevelsPane {
+        SuitLevelsLabel {
+            Layout.alignment: Qt.AlignRight
             iconValue: ""
             titleValue: "Ext:"
             dataValue: `${suitLevels.externalTemperature.toFixed(1)}°`
         }
 
-        SuitLevelsPane {
+        SuitLevelsLabel {
+            Layout.alignment: Qt.AlignRight
             iconValue: ""
             titleValue: "Suit:"
             dataValue: `${suitLevels.suitTemperature.toFixed(1)}°`
         }
 
-        SuitLevelsPane {
+        SuitLevelsLabel {
+            Layout.alignment: Qt.AlignRight
             iconValue: ""
             titleValue: "Power Cell:"
             dataValue: `${suitLevels.powerCell.toFixed(1)}%`
