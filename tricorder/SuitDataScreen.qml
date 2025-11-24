@@ -191,7 +191,7 @@ Pane {
 
     Timer {
         id: depleteValues
-        interval: 200
+        interval: 2000
         running: true
         repeat: true
         onTriggered: {
