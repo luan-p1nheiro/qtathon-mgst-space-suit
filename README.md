@@ -108,9 +108,7 @@ make -j4
 
 ## 🙏 Acknowledgments
 
-- **Qt Company** for hosting Qtathon 2024
-- **NASA** and space agencies for inspiration
+- **Qt Company** for hosting Qtathon 2025
 - **Open Source Community** for tools and libraries
-- **Contributors** and testers who helped improve the projects
 
 **Built with ❤️ and Qt for the future of space exploration**
