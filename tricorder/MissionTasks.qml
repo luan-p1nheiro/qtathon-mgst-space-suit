@@ -103,13 +103,13 @@ Rectangle {
 
                 Text {
                     text: "Maximum Allowed Duration: " + secondsToTimeString(maximumAllowedDuration)
-                    font: Style.small
+                    font: Style.data
                     color: "#ccc"
                 }
 
                 Text {
                     text: "Time Taken: " + (timeTaken !== "" ? timeTaken : "Not finished")
-                    font: Style.small
+                    font: Style.data
                     color: timeTaken !== "" ? "#66ff66" : "#888"
                 }
 
@@ -144,17 +144,17 @@ Rectangle {
                             anchors.margins: 10
 
                             Text { text: title; font: Style.subtitle; color: "white" }
-                            Text { text: description; font: Style.small; color: "#ccc"; wrapMode: Text.Wrap }
+                            Text { text: description; font: Style.data; color: "#ccc"; wrapMode: Text.Wrap }
 
                             Text {
                                 text: "Maximum Allowed Duration: " + secondsToTimeString(maximumAllowedDuration)
-                                font: Style.small
+                                font: Style.data
                                 color: "#ccc"
                             }
 
                             Text {
                                 text: "Time Taken: " + (timeTaken !== "" ? timeTaken : "Not finished")
-                                font: Style.small
+                                font: Style.data
                                 color: timeTaken !== "" ? "#66ff66" : "#888"
                             }
 
