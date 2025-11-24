@@ -4,9 +4,7 @@
 #include <QMqttTopicName>
 
 QmlMqttClient::QmlMqttClient(QObject *parent)
-    : QObject(parent),
-      m_clientId("client_" +
-                 QString::number(QDateTime::currentMSecsSinceEpoch())) {
+    : QObject(parent) {
     connect(&m_client, &QMqttClient::hostnameChanged, this,
             &QmlMqttClient::hostnameChanged);
     connect(&m_client, &QMqttClient::portChanged, this,

@@ -1,5 +1,4 @@
 import QtQuick
-import QtQuick.Layouts
 import QtQuick.Controls
 import QtQuick.Controls.Universal
 
@@ -11,7 +10,7 @@ ApplicationWindow {
     title: qsTr("Tricorder")
 
     Universal.theme: Universal.Dark
-    Universal.accent: "darkgreen"
+    Universal.accent: "white"
 
     Component.onCompleted: {
         if (Env.settings.clientId === "") {
@@ -25,7 +24,8 @@ ApplicationWindow {
         anchors.fill: parent
 
         Item {
-            SuitData {
+            SuitDataScreen {
+                id: suitDataScreen
                 anchors.margins: Style.margins
             }
         }

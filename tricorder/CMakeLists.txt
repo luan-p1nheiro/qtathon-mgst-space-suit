@@ -19,11 +19,11 @@ qt_add_qml_module(apptricorder
     URI tricorder
     QML_FILES
         Main.qml
-        SuitData.qml
+        DataLabel.qml
+        SuitDataScreen.qml
         Missions.qml
         Style.qml
         Env.qml
-        SuitDataPane.qml
         MqttClientComponent.qml
     SOURCES
         qmlmqttclient.cpp qmlmqttclient.h
