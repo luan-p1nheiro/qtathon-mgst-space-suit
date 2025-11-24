@@ -13,8 +13,17 @@ Pane {
     property double externalTemperatureValue: 20
     property double powerCellValue: 100
 
+    Component.onCompleted: {
+        MqttClientComponent.publish(`suitdata/o2gauge/${MqttClientComponent.clientId}`, o2GaugeValue, 0, true);
+        MqttClientComponent.publish(`suitdata/co2gauge/${MqttClientComponent.clientId}`, co2GaugeValue, 0, true);
+        MqttClientComponent.publish(`suitdata/suittemperature/${MqttClientComponent.clientId}`, suitTemperatureValue, 0, true);
+        MqttClientComponent.publish(`suitdata/externaltemperature/${MqttClientComponent.clientId}`, externalTemperatureValue, 0, true);
+        MqttClientComponent.publish(`suitdata/powercell/${MqttClientComponent.clientId}`, powerCellValue, 0, true);
+    }
+
     onO2GaugeValueChanged: {
         if (o2GaugeValue === 0) {
+            o2Gauge.color = Style.dangerColor;
             o2Gauge.iconValue = "󰡳";
         } else if (o2GaugeValue < 20) {
             o2Gauge.color = Style.dangerColor;
@@ -26,6 +35,7 @@ Pane {
             o2Gauge.color = Style.defaultColor;
             o2Gauge.iconValue = "󰡴";
         }
+        MqttClientComponent.publish(`suitdata/o2gauge/${MqttClientComponent.clientId}`, o2GaugeValue, 0, true);
     }
 
     onCo2GaugeValueChanged: {
@@ -42,6 +52,7 @@ Pane {
             co2Gauge.color = Style.defaultColor;
             co2Gauge.iconValue = "󰡴";
         }
+        MqttClientComponent.publish(`suitdata/co2gauge/${MqttClientComponent.clientId}`, co2GaugeValue, 0, true);
     }
 
     onSuitTemperatureValueChanged: {
@@ -61,6 +72,7 @@ Pane {
             suitTemperature.color = Style.defaultColor;
             suitTemperature.iconValue = "";
         }
+        MqttClientComponent.publish(`suitdata/suittemperature/${MqttClientComponent.clientId}`, suitTemperatureValue, 0, true);
     }
 
     onExternalTemperatureValueChanged: {
@@ -80,6 +92,7 @@ Pane {
             externalTemperature.color = Style.defaultColor;
             externalTemperature.iconValue = "";
         }
+        MqttClientComponent.publish(`suitdata/externaltemperature/${MqttClientComponent.clientId}`, externalTemperatureValue, 0, true);
     }
 
     onPowerCellValueChanged: {
@@ -95,6 +108,7 @@ Pane {
             powerCell.color = Style.defaultColor;
             powerCell.iconValue = "󱊣";
         }
+        MqttClientComponent.publish(`suitdata/powercell/${MqttClientComponent.clientId}`, powerCellValue, 0, true);
     }
 
     ColumnLayout {
@@ -177,7 +191,7 @@ Pane {
 
     Timer {
         id: depleteValues
-        interval: 2000
+        interval: 200
         running: true
         repeat: true
         onTriggered: {
