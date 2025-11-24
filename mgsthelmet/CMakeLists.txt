@@ -21,18 +21,15 @@ qt_add_qml_module(appmgsthelmet
     QML_FILES
         Main.qml
         SuitLevelsSection.qml
-        SuitLevelsLabel.qml
-        Warnings.qml
+        DataLabel.qml
         Env.qml
         Style.qml
-        NextTask.qml
         MissionSection.qml
         MqttClientComponent.qml
     SOURCES
         qmlmqttclient.cpp qmlmqttclient.h
     RESOURCES
-        fonts/Silkscreen/Silkscreen-Regular.ttf
-        fonts/Silkscreen/Silkscreen-Bold.ttf
+        fonts/DepartureMono/DepartureMonoNerdFontMono-Regular.otf
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

@@ -14,8 +14,11 @@ MqttClient {
 
     onStateChanged: {
         if (mqttClient.state === 2) {
-            mqttClient.subscribe(Env.broadcastTopic);
-            mqttClient.subscribe(`suitdata/${mqttClient.clientId}`);
+            mqttClient.subscribe(`suitdata/o2gauge/${mqttClient.clientId}`);
+            mqttClient.subscribe(`suitdata/co2gauge/${mqttClient.clientId}`);
+            mqttClient.subscribe(`suitdata/suittemperature/${mqttClient.clientId}`);
+            mqttClient.subscribe(`suitdata/externaltemperature/${mqttClient.clientId}`);
+            mqttClient.subscribe(`suitdata/powercell/${mqttClient.clientId}`);
         }
     }
 }

@@ -45,9 +45,13 @@ class QmlMqttClient : public QObject {
     void portChanged();
     void stateChanged();
     void clientIdChanged();
-    void suitDataMessageReceived(const QVariantMap &data);
-    void messageReceived(const QString &topic, const QVariantMap &data,
-                         const QString &sender);
+    void o2GaugeMessageReceived(const QString &data);
+    void co2GaugeMessageReceived(const QString &data);
+    void suitTemperatureMessageReceived(const QString &data);
+    void externalTemperatureMessageReceived(const QString &data);
+    void powerCellMessageReceived(const QString &data);
+    void missionMessageReceived(const QString &data);
+    void nextTaskMessageReceived(const QString &data);
 
   private slots:
     void onMessageReceived(const QByteArray &data,

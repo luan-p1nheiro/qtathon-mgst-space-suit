@@ -69,12 +69,27 @@ void QmlMqttClient::unsubscribe(const QString &topic) {
 
 void QmlMqttClient::onMessageReceived(const QByteArray &message,
                                       const QMqttTopicName &topic) {
-    QJsonDocument doc = QJsonDocument::fromJson(message);
-    QVariantMap data = doc["data"].toObject().toVariantMap();
-    if (topic.name().contains("suitdata")) {
-        emit suitDataMessageReceived(data);
-    }
+    const QString messageData = QString::fromUtf8(message);
 
-    emit messageReceived(topic.name(), data,
-                         doc["sender"].toString());
+    if (topic.name().contains("/o2gauge")) {
+        emit o2GaugeMessageReceived(messageData);
+    }
+    else if (topic.name().contains("/co2gauge")) {
+        emit co2GaugeMessageReceived(messageData);
+    }
+    else if (topic.name().contains("/suittemperature")) {
+        emit suitTemperatureMessageReceived(messageData);
+    }
+    else if (topic.name().contains("/externaltemperature")) {
+        emit externalTemperatureMessageReceived(messageData);
+    }
+    else if (topic.name().contains("/powercell")) {
+        emit powerCellMessageReceived(messageData);
+    }
+    else if (topic.name().contains("/mission/name")) {
+        emit missionMessageReceived(messageData);
+    }
+    else if (topic.name().contains("/mission/nexttask")) {
+        emit nextTaskMessageReceived(messageData);
+    }
 }
