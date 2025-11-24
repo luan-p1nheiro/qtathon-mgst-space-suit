@@ -4,7 +4,6 @@ A collection of space suit management and simulation applications developed for 
 
 ![Qt](https://img.shields.io/badge/Qt-6.x-green.svg)
 ![C++](https://img.shields.io/badge/C++-17-blue.svg)
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)
 
 ## 📁 Project Structure
