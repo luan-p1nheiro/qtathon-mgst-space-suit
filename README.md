@@ -39,7 +39,7 @@ A specialized space suit control interface with real-time monitoring and system 
 - Intuitive astronaut interface
 - System status visualization
 
-### 2. Tricorder (`mgsthelmet/`)
+### 2. Tricorder (`tricorder/`)
 The main management system for mission control, providing comprehensive oversight of multiple space suits and mission parameters.
 
 **Key Features:**
@@ -66,22 +66,22 @@ The main management system for mission control, providing comprehensive oversigh
 
 ### Building Individual Projects
 
-#### Build MGST Space Suit
+#### Build Tricorder
 ```bash
-cd mgst-space-suit
+cd tricorder
 mkdir build && cd build
 cmake ..
 make -j4
-./mgst-space-suit
+./tricorder
 ```
 
-#### Build Qtathon MGST Space Suit
+#### Build MGST Helmet
 ```bash
-cd qtathon-mgst-space-suit
+cd mgsthelmet
 mkdir build && cd build
 cmake ..
 make -j4
-./qtathon-mgst-space-suit
+./mgsthelmet
 ```
 
 ### Building All Projects
