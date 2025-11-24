@@ -92,8 +92,8 @@ cmake ..
 make -j4
 
 # Run specific application
-./mgst-space-suit/mgst-space-suit
-./qtathon-mgst-space-suit/qtathon-mgst-space-suit
+./tricorder/tricorder
+./mgsthelmet/mgsthelmet
 ```
 
 ## 👨‍💻 Authors
