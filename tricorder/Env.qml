@@ -3,6 +3,8 @@ import QtQuick
 import QtCore
 
 QtObject {
+    readonly property string mqttHostname: "test.mosquitto.org"
+    readonly property int mqttPort: 1883
     readonly property string backendUrl: "http://localhost:3000/"
     readonly property Settings settings: Settings {
         property string clientId: ""

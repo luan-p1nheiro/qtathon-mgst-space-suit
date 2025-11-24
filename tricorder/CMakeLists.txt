@@ -4,7 +4,7 @@ project(tricorder VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Quick QuickControls2)
+find_package(Qt6 REQUIRED COMPONENTS Quick IntermixControls QuickControls2 Mqtt)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -12,21 +12,21 @@ qt_add_executable(apptricorder
     main.cpp
 )
 
-set_source_files_properties(Env.qml Style.qml
+set_source_files_properties(Env.qml Style.qml MqttClientComponent.qml
     PROPERTIES QT_QML_SINGLETON_TYPE TRUE)
 
 qt_add_qml_module(apptricorder
     URI tricorder
     QML_FILES
         Main.qml
-        SuitData.qml
+        DataLabel.qml
+        SuitDataScreen.qml
+        Missions.qml
         Style.qml
         Env.qml
-        SuitDataPane.qml
-        MissionScreen.qml
-        MissionTasks.qml
-        TimerPanel.qml
-        TasksScreen.qml
+        MqttClientComponent.qml
+    SOURCES
+        qmlmqttclient.cpp qmlmqttclient.h
     RESOURCES
         fonts/DepartureMono/DepartureMonoNerdFont-Regular.otf
         QML_FILES
@@ -44,7 +44,7 @@ set_target_properties(apptricorder PROPERTIES
 )
 
 target_link_libraries(apptricorder
-    PRIVATE Qt6::Quick Qt6::Core Qt6::QuickControls2
+    PRIVATE Qt6::Quick Qt6::Core Qt6::QuickControls2 Qt6::Mqtt
 )
 
 if(ANDROID OR IOS)
