@@ -4,7 +4,7 @@ project(tricorder VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Quick IntermixControls QuickControls2 Mqtt)
+find_package(Qt6 REQUIRED COMPONENTS Quick QuickControls2 Mqtt)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -21,10 +21,13 @@ qt_add_qml_module(apptricorder
         Main.qml
         DataLabel.qml
         SuitDataScreen.qml
-        Missions.qml
         Style.qml
         Env.qml
         MqttClientComponent.qml
+        MissionScreen.qml
+        MissionTasks.qml
+        TasksScreen.qml
+        TimerPanel.qml
     SOURCES
         qmlmqttclient.cpp qmlmqttclient.h
     RESOURCES
@@ -44,16 +47,8 @@ set_target_properties(apptricorder PROPERTIES
 )
 
 target_link_libraries(apptricorder
-    PRIVATE Qt6::Quick Qt6::Core Qt6::QuickControls2 Qt6::Mqtt
+    PRIVATE Qt6::Quick Qt6::QuickControls2 Qt6::Mqtt
 )
-
-if(ANDROID OR IOS)
-    # Intermix Controls plugin's initializeEngine() is not invoked in iOS
-    target_link_libraries(emile PRIVATE Qt6::Multimedia)
-    if(IOS)
-        qt_add_ios_ffmpeg_libraries(emile)
-    endif()
-endif()
 
 include(GNUInstallDirs)
 install(TARGETS apptricorder
