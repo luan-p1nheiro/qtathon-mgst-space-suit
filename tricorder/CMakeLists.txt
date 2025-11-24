@@ -29,6 +29,7 @@ qt_add_qml_module(apptricorder
         TasksScreen.qml
     RESOURCES
         fonts/DepartureMono/DepartureMonoNerdFont-Regular.otf
+        QML_FILES TasksDetails.js
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

@@ -31,12 +31,15 @@ ApplicationWindow {
         }
         Item {
             MissionScreen{
+                id: missionScreen
                 anchors.margins: Style.margins
             }
         }
+
         Item {
             TasksScreen{
                 anchors.margins: Style.margins
+                currentMission: missionScreen.currentMission
             }
         }
     }
@@ -61,4 +64,6 @@ ApplicationWindow {
             text: qsTr("")
         }
     }
+
+
 }
